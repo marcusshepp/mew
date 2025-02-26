@@ -44,52 +44,10 @@ const testimonials: Testimonial[] = [
     },
 ];
 
-interface Service {
-    id: number;
-    name: string;
-    desc: string;
-    Icon: IconType;
-}
+
 
 export default function Home() {
-    const services: Service[] = [
-        {
-            id: 1,
-            name: 'Modern Web Design',
-            desc: "Beautiful, responsive websites that capture your brand's essence and engage your audience.",
-            Icon: FiMonitor,
-        },
-        {
-            id: 2,
-            name: 'Website Modernization',
-            desc: 'Transform your existing website with modern technologies for better performance and user experience.',
-            Icon: FiRefreshCw,
-        },
-        {
-            id: 3,
-            name: 'SEO & Digital Presence',
-            desc: 'Boost your visibility with data-driven SEO strategies and content optimization.',
-            Icon: FiSearch,
-        },
-        {
-            id: 4,
-            name: 'Hosting & Maintenance',
-            desc: 'Secure, reliable hosting with continuous monitoring and maintenance.',
-            Icon: FiServer,
-        },
-        {
-            id: 5,
-            name: 'Business Automation',
-            desc: 'Streamline your operations with custom automation solutions.',
-            Icon: FiCpu,
-        },
-        {
-            id: 6,
-            name: 'AI Integration',
-            desc: 'Leverage cutting-edge AI to enhance your business processes and customer experience.',
-            Icon: FiCpu,
-        },
-    ];
+    
 
     return (
         <main className="min-h-screen text-white">
