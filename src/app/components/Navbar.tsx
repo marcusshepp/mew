@@ -222,11 +222,11 @@ export default function Navbar() {
 
                 {/* Enhanced Mobile Menu - Cosmic Theme */}
                 <div
-                    className={`fixed inset-0 bg-black backdrop-blur-lg z-20 md:hidden transition-all duration-500 ease-in-out ${
+                    className={`fixed inset-0 z-20 md:hidden transition-all duration-500 ease-in-out ${
                         isMenuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
                     }`}
                     style={{ 
-                        background: 'radial-gradient(circle at center, rgba(30, 58, 138, 0.8) 0%, rgba(0, 0, 0, 0.95) 100%)',
+                        background: 'radial-gradient(circle at center, rgba(30, 58, 138, 0.9) 0%, rgba(0, 0, 0, 0.98) 100%)',
                         backgroundSize: '200% 200%',
                         animation: isMenuOpen ? 'gradientShift 15s ease infinite' : 'none'
                     }}
@@ -250,11 +250,11 @@ export default function Navbar() {
                     </div>
 
                     <div className="flex flex-col justify-center items-center h-full">
-                        <ul className="flex flex-col items-center space-y-8 relative">
-                            {['home', 'services', 'testimonials', 'contact'].map((section, index) => (
+                        <ul className="flex flex-col items-center space-y-6 relative w-full px-6">
+                            {['home', 'services', 'projects', 'testimonials', 'about', 'contact'].map((section, index) => (
                                 <li 
                                     key={section}
-                                    className="relative"
+                                    className="relative w-full"
                                     style={{
                                         opacity: isMenuOpen ? 1 : 0,
                                         transform: isMenuOpen ? 'translateY(0)' : 'translateY(20px)',
@@ -263,9 +263,10 @@ export default function Navbar() {
                                 >
                                     <button
                                         onClick={() => scrollToSection(section)}
-                                        className="text-3xl font-light text-white hover:text-blue-400 transition-colors duration-300 px-4 py-2 relative group"
+                                        className="text-2xl font-light text-white hover:text-blue-400 transition-colors duration-300 py-3 relative group w-full flex items-center justify-center"
                                     >
-                                        {section.charAt(0).toUpperCase() + section.slice(1)}
+                                        <div className="absolute inset-0 bg-blue-900 bg-opacity-20 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                                        <span className="relative z-10">{section.charAt(0).toUpperCase() + section.slice(1)}</span>
                                         <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-gradient-to-r from-blue-400 to-purple-600 group-hover:w-full transition-all duration-300"></span>
                                     </button>
                                 </li>
@@ -274,11 +275,11 @@ export default function Navbar() {
 
                         {/* Social links in mobile menu - Enhanced */}
                         <div 
-                            className="flex space-x-8 mt-16"
+                            className="flex space-x-8 mt-12 bg-blue-900 bg-opacity-30 px-10 py-6 rounded-xl"
                             style={{
                                 opacity: isMenuOpen ? 1 : 0,
                                 transform: isMenuOpen ? 'translateY(0)' : 'translateY(20px)',
-                                transition: 'opacity 0.5s ease 0.4s, transform 0.5s ease 0.4s'
+                                transition: 'opacity 0.5s ease 0.7s, transform 0.5s ease 0.7s'
                             }}
                         >
                             {[
