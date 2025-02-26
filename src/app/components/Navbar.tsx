@@ -6,18 +6,14 @@ export default function Navbar() {
     const [isVisible, setIsVisible] = useState(false);
 
     useEffect(() => {
-        const handleScroll = () => {
-            setIsVisible(window.scrollY > 50);
-        };
+        const handleScroll = () => setIsVisible(window.scrollY > 50);
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
     const scrollToSection = (id: string) => {
         const element = document.getElementById(id);
-        if (element) {
-            element.scrollIntoView({ behavior: 'smooth' });
-        }
+        if (element) element.scrollIntoView({ behavior: 'smooth' });
     };
 
     return (
@@ -27,8 +23,12 @@ export default function Navbar() {
             }`}
         >
             <div className="flex items-center justify-between max-w-6xl mx-auto p-4">
-                {/* Meditating Figure */}
-                <div className="text-white opacity-80">
+                <div className="text-white opacity-80 flex items-center">
+                    <img
+                        src="/logo.png"
+                        alt="Guru Development Logo"
+                        className="h-8 mr-2"
+                    />
                     <span
                         className="text-2xl"
                         role="img"
@@ -37,40 +37,25 @@ export default function Navbar() {
                         🧘
                     </span>
                 </div>
-
-                {/* Links */}
                 <ul
                     className={`flex space-x-8 text-white ${
                         isVisible ? 'opacity-100' : 'opacity-0'
                     } transition-opacity duration-500`}
                 >
-                    <li>
-                        <button
-                            onClick={() => scrollToSection('hero')}
-                            className="relative text-lg font-light tracking-wider hover:text-gray-300 group"
-                        >
-                            Home
-                            <span className="absolute left-0 bottom-[-4px] w-full h-0.5 bg-white scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
-                        </button>
-                    </li>
-                    <li>
-                        <button
-                            onClick={() => scrollToSection('services')}
-                            className="relative text-lg font-light tracking-wider hover:text-gray-300 group"
-                        >
-                            Services
-                            <span className="absolute left-0 bottom-[-4px] w-full h-0.5 bg-white scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
-                        </button>
-                    </li>
-                    <li>
-                        <button
-                            onClick={() => scrollToSection('contact')}
-                            className="relative text-lg font-light tracking-wider hover:text-gray-300 group"
-                        >
-                            Contact
-                            <span className="absolute left-0 bottom-[-4px] w-full h-0.5 bg-white scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
-                        </button>
-                    </li>
+                    {['home', 'services', 'testimonials', 'contact'].map(
+                        (section) => (
+                            <li key={section}>
+                                <button
+                                    onClick={() => scrollToSection(section)}
+                                    className="relative text-lg font-light tracking-wider hover:text-[var(--primary)] group"
+                                >
+                                    {section.charAt(0).toUpperCase() +
+                                        section.slice(1)}
+                                    <span className="absolute left-0 bottom-[-4px] w-full h-0.5 bg-[var(--primary)] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+                                </button>
+                            </li>
+                        )
+                    )}
                 </ul>
             </div>
         </nav>

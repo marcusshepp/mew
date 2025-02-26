@@ -1,13 +1,14 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Montserrat } from 'next/font/google';
 import './globals.css';
 import Navbar from './components/Navbar';
 
-const inter = Inter({ subsets: ['latin'] });
+const montserrat = Montserrat({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
     title: 'Guru Development',
-    description: 'Professional web development services.',
+    description:
+        'Web development solutions for small businesses including website creation, SEO, and AI integrations.',
 };
 
 export default function RootLayout({
@@ -17,7 +18,7 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en">
-            <body className={inter.className}>
+            <body className={montserrat.className}>
                 <Navbar />
                 {children}
             </body>
