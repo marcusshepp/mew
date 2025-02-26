@@ -1,11 +1,4 @@
-import {
-    FiMonitor,
-    FiRefreshCw,
-    FiSearch,
-    FiServer,
-    FiCpu,
-} from 'react-icons/fi';
-import { IconType } from 'react-icons';
+
 import MinimalThreeBackground from './components/MinimalBackground';
 import TestimonialCarousel from './components/TestimonialCarousel';
 import ContactForm from './components/ContactForm';
