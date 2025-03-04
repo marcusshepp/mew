@@ -3,13 +3,11 @@
 import { useState, useEffect, useMemo } from 'react';
 
 export default function ResponsiveHero() {
-    // For animated typing effect
     const [displayText, setDisplayText] = useState('');
     const [isDeleting, setIsDeleting] = useState(false);
     const [currentIndex, setCurrentIndex] = useState(0);
     const [typingSpeed, setTypingSpeed] = useState(100);
 
-    // Use useMemo to prevent texts array from being recreated on each render
     const texts = useMemo(
         () => [
             'small businesses.',
@@ -21,37 +19,30 @@ export default function ResponsiveHero() {
     );
 
     useEffect(() => {
-        let timer;
+        let timer: NodeJS.Timeout; // Explicitly type timer
         const currentText = texts[currentIndex];
 
-        // Handle typing and deleting
         if (!isDeleting && displayText === currentText) {
-            // Full text typed - pause before deleting
             timer = setTimeout(() => {
                 setIsDeleting(true);
-                setTypingSpeed(50); // Faster when deleting
+                setTypingSpeed(50);
             }, 2000);
         } else if (isDeleting && displayText === '') {
-            // Text fully deleted - move to next text
             setIsDeleting(false);
-            setTypingSpeed(100); // Normal speed for typing
+            setTypingSpeed(100);
             setCurrentIndex((prevIndex) => (prevIndex + 1) % texts.length);
         } else {
-            // Either typing or deleting in progress
             timer = setTimeout(() => {
                 setDisplayText((prev) => {
                     if (isDeleting) {
-                        // Delete one character
                         return prev.substring(0, prev.length - 1);
                     } else {
-                        // Add one character
                         return currentText.substring(0, prev.length + 1);
                     }
                 });
             }, typingSpeed);
         }
 
-        // Cleanup timer
         return () => clearTimeout(timer);
     }, [displayText, isDeleting, currentIndex, texts, typingSpeed]);
 
@@ -60,7 +51,6 @@ export default function ResponsiveHero() {
             id="home"
             className="min-h-[100svh] flex items-center justify-center px-4 relative overflow-hidden"
         >
-            {/* Animated background stars/particles - reduced count for mobile */}
             <div className="absolute inset-0 pointer-events-none">
                 {[...Array(15)].map((_, i) => (
                     <div
@@ -77,7 +67,6 @@ export default function ResponsiveHero() {
                 ))}
             </div>
 
-            {/* Gradient glow effect */}
             <div
                 className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[50vw] h-[50vh] opacity-20 blur-3xl rounded-full"
                 style={{
@@ -116,7 +105,6 @@ export default function ResponsiveHero() {
                     </a>
                 </div>
 
-                {/* Scroll indicator - visible on larger screens or when content is taller than viewport */}
                 <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 hidden md:flex flex-col items-center animate-bounce">
                     <span className="text-white/60 text-sm mb-2">Scroll</span>
                     <svg

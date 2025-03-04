@@ -209,7 +209,7 @@ export default function ContactForm() {
                     </h3>
                     <p className="text-gray-300 mt-2 text-sm sm:text-base">
                         Let us help bring your vision to life. Fill out the form
-                        below and we'll get back to you shortly.
+                        below and well get back to you shortly.
                     </p>
                 </div>
 
