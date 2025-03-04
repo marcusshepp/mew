@@ -1,7 +1,6 @@
-// Improvements to make ContactForm.tsx more mobile-friendly
-// Update the existing component with these changes
-
 'use client';
+
+import type React from 'react';
 
 import { useState } from 'react';
 import { FiSend, FiCheck, FiAlertTriangle } from 'react-icons/fi';
@@ -75,7 +74,6 @@ export default function ContactForm() {
     const validateForm = (): boolean => {
         const newErrors: FormErrors = {};
         let isValid = true;
-
         (Object.keys(formData) as Array<keyof FormData>).forEach((key) => {
             const error = validateField(key, formData[key]);
             if (error) {
@@ -134,11 +132,21 @@ export default function ContactForm() {
         setSubmitStatus('submitting');
 
         try {
-            // Replace with your actual form submission logic
-            // Example: await fetch('/api/contact', { method: 'POST', body: JSON.stringify(formData) })
+            // Send data to the API endpoint
+            const response = await fetch(
+                'https://api.gurudevelopment.net/api/MEW/ContactUs',
+                {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formData),
+                }
+            );
 
-            // Simulate API call with timeout
-            await new Promise((resolve) => setTimeout(resolve, 1500));
+            if (!response.ok) {
+                throw new Error(`Server responded with ${response.status}`);
+            }
 
             // Reset form on success
             setFormData({

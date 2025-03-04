@@ -1,96 +1,9 @@
-import {
-    FiMonitor,
-    FiRefreshCw,
-    FiSearch,
-    FiServer,
-    FiCpu,
-} from 'react-icons/fi';
-import { IconType } from 'react-icons';
 import MinimalThreeBackground from './components/MinimalBackground';
-import TestimonialCarousel from './components/TestimonialCarousel';
 import ContactForm from './components/ContactForm';
 import ResponsiveHero from './components/Hero';
 import ServiceCards from './components/Services';
 
-interface Testimonial {
-    id: number;
-    name: string;
-    company: string;
-    quote: string;
-    image?: string;
-}
-
-const testimonials: Testimonial[] = [
-    {
-        id: 1,
-        name: 'Jane Smith',
-        company: 'Acme Solutions',
-        quote: 'Guru Development transformed our online presence. Their modern approach and attention to detail led to a 40% increase in our conversion rate.',
-        image: '/api/placeholder/80/80',
-    },
-    {
-        id: 2,
-        name: 'Michael Johnson',
-        company: 'TechInnovate',
-        quote: 'Working with Guru Development was seamless. They understood our vision and delivered a website that exceeded our expectations, all while staying on budget.',
-        image: '/api/placeholder/80/80',
-    },
-    {
-        id: 3,
-        name: 'Sarah Williams',
-        company: 'Greener Pastures',
-        quote: 'The AI integration Guru Development implemented saves us hours every week. Their technical expertise combined with business understanding is rare and valuable.',
-        image: '/api/placeholder/80/80',
-    },
-];
-
-interface Service {
-    id: number;
-    name: string;
-    desc: string;
-    Icon: IconType;
-}
-
 export default function Home() {
-    const services: Service[] = [
-        {
-            id: 1,
-            name: 'Modern Web Design',
-            desc: "Beautiful, responsive websites that capture your brand's essence and engage your audience.",
-            Icon: FiMonitor,
-        },
-        {
-            id: 2,
-            name: 'Website Modernization',
-            desc: 'Transform your existing website with modern technologies for better performance and user experience.',
-            Icon: FiRefreshCw,
-        },
-        {
-            id: 3,
-            name: 'SEO & Digital Presence',
-            desc: 'Boost your visibility with data-driven SEO strategies and content optimization.',
-            Icon: FiSearch,
-        },
-        {
-            id: 4,
-            name: 'Hosting & Maintenance',
-            desc: 'Secure, reliable hosting with continuous monitoring and maintenance.',
-            Icon: FiServer,
-        },
-        {
-            id: 5,
-            name: 'Business Automation',
-            desc: 'Streamline your operations with custom automation solutions.',
-            Icon: FiCpu,
-        },
-        {
-            id: 6,
-            name: 'AI Integration',
-            desc: 'Leverage cutting-edge AI to enhance your business processes and customer experience.',
-            Icon: FiCpu,
-        },
-    ];
-
     return (
         <main className="min-h-screen text-white">
             <MinimalThreeBackground />
@@ -108,75 +21,8 @@ export default function Home() {
                 </div>
             </section>
 
-            {/* Testimonials Section */}
-            <section id="testimonials" className="py-20 px-4 relative">
-                <div className="max-w-6xl mx-auto">
-                    <h2 className="text-4xl font-bold mb-12 text-center bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-600">
-                        Client Testimonials
-                    </h2>
-
-                    {/* Desktop Grid Layout */}
-                    <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        {testimonials.map((testimonial) => (
-                            <div
-                                key={testimonial.id}
-                                className="p-6 rounded-xl backdrop-blur-sm transform hover:scale-105 transition-all duration-500 ease-in-out relative overflow-hidden group"
-                                style={{
-                                    background:
-                                        'linear-gradient(45deg, rgba(59, 130, 246, 0.1), rgba(147, 51, 234, 0.1))',
-                                    boxShadow:
-                                        '0 8px 32px rgba(31, 38, 135, 0.15)',
-                                    border: '1px solid rgba(255, 255, 255, 0.1)',
-                                }}
-                            >
-                                {/* Quote Icon */}
-                                <div className="absolute -top-2 -left-2 text-4xl text-blue-400 opacity-30 group-hover:opacity-60 transition-opacity">
-                                    &ldquo;
-                                </div>
-
-                                <div className="relative z-10">
-                                    {/* Quote */}
-                                    <p className="text-gray-300 mb-6 italic">
-                                        &ldquo;{testimonial.quote}&ldquo;
-                                    </p>
-
-                                    {/* Client Info */}
-                                    <div className="flex items-center mt-4">
-                                        {testimonial.image && (
-                                            <div className="mr-4 rounded-full overflow-hidden border-2 border-blue-400 p-0.5">
-                                                <img
-                                                    src={testimonial.image}
-                                                    alt={testimonial.name}
-                                                    className="w-12 h-12 rounded-full"
-                                                />
-                                            </div>
-                                        )}
-                                        <div>
-                                            <h4 className="font-bold text-white">
-                                                {testimonial.name}
-                                            </h4>
-                                            <p className="text-sm text-blue-400">
-                                                {testimonial.company}
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                {/* Decorative elements */}
-                                <div className="absolute -bottom-2 -right-2 w-20 h-20 rounded-full bg-gradient-to-r from-blue-500/10 to-purple-500/10 blur-2xl group-hover:opacity-100 opacity-0 transition-opacity"></div>
-                            </div>
-                        ))}
-                    </div>
-
-                    {/* Mobile Testimonial Carousel */}
-                    <div className="md:hidden">
-                        <TestimonialCarousel testimonials={testimonials} />
-                    </div>
-                </div>
-            </section>
-
             {/* Contact Section */}
-            <section id="contact" className="py-20 px-4 relative">
+            <section className="py-20 px-4 relative">
                 <div className="max-w-6xl mx-auto">
                     <h2 className="text-4xl font-bold mb-12 text-center bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-600">
                         Get in Touch
@@ -364,7 +210,7 @@ export default function Home() {
                         </div>
 
                         {/* Contact Form */}
-                        <div>
+                        <div style={{ scrollPaddingTop: '50px' }} id="contact">
                             <ContactForm />
                         </div>
                     </div>
